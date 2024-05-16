@@ -1,44 +1,55 @@
 import { useState } from "react";
 import { Icons } from "../constants/icons";
- 
-const NavLinks = () => {
+
+const NavLinks = ({ mobile }) => {
   return (
     <>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
+      <a
+        href="#"
+        className={`font-montserrat text-xl font-semibold  hover:text-white hover:bg-neutral-900 px-4 py-2 rounded transition-all ${
+          mobile ? " border rounded p-4" : null
+        } `}
+      >
+        Home
+      </a>
+      <a
+        href="#"
+        className={`font-montserrat text-xl font-semibold  hover:text-white hover:bg-neutral-900  px-4 py-2 rounded transition-all ${
+          mobile ? " border rounded p-4" : null
+        } `}
+      >
+        Shop
+      </a>
     </>
   );
 };
 
 const Nav = () => {
-      const [isOpen, setIsOpen] = useState(false);
-      const toggleNavbar = () => setIsOpen(!isOpen);
-      const { Bars3, XMark } = Icons;
-
- 
- 
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleNavbar = () => setIsOpen(!isOpen);
+  const { Bars3, XMark } = Icons;
 
   return (
     <>
-      <nav className="flex w-1/3 justify-end">
-        <div className=" hidden justify-between w-full md:flex">
+      <nav className="md:w-2/12 animate-slide-in-left">
+        <div className=" justify-between  gap-4  max-sm:hidden md:flex">
           <NavLinks />
         </div>
-        <div>
+        <div className="">
           <button onClick={toggleNavbar} className="w-9 h-9 md:hidden">
             {isOpen ? <XMark /> : <Bars3 />}
           </button>
         </div>
       </nav>
 
-      {
-        isOpen && (
-            <div className=" flex flex-col items-center basis-full ">
-                <NavLinks />
-            </div>
-        )
-      }
+      {/* small device */}
+      {isOpen && (
+        <div
+          className={`absolute pt-10 top-[11%] flex flex-col w-[80%] h-[80%] left-0 gap-2 px-10 bg-slate-800 text-white shadow-md rounded animate-shake  `}
+        >
+          <NavLinks mobile />
+        </div>
+      )}
     </>
   );
 };

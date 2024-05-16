@@ -1,7 +1,7 @@
 const Logo = () => {
   return (
-    <div className="logo">
-      <a href="#" className="font-bold font-montserrat text-3xl  ">
+    <div className="logo animate-slide-out-right ">
+      <a href="#" className="font-bold font-montserrat text-3xl ">
         {" "}
         E-Store
       </a>
