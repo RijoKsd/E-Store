@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Banner from '../assets/banner.png'
 const Hero = () => {
   return (
@@ -15,9 +16,9 @@ const Hero = () => {
             <p className="mb-5  text-5xl font-bold font-montserrat animate-flash">
               Most wanted and most loved
             </p>
-            <button className="btn btn-info font-montserrat animate-shake">
+            <Link to='/shop' className="btn btn-info font-montserrat animate-shake">
               Shop New Arrivals
-            </button>
+            </Link>
           </div>
         </div>
       </div>

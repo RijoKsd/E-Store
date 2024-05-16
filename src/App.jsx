@@ -1,14 +1,15 @@
-import Header from "./components/Header";
-import Hero from "./components/Hero";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+ 
+import routes from "./routes/routes";
  
  
 
 export default function App() {
+
+  const router = createBrowserRouter(routes)
   return (
-    <>
-      <Header />
-      <Hero />
-    </>
+    <RouterProvider router = {router} />
+  
   );
 }
  

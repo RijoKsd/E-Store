@@ -1,25 +1,27 @@
 import { useState } from "react";
-import { Icons } from "../constants/icons";
+import { Icons } from "../../constants/icons";
+import { NavLink } from "react-router-dom";
 
 const NavLinks = ({ mobile }) => {
   return (
     <>
-      <a
-        href="#"
-        className={`font-montserrat text-xl font-semibold  hover:text-white hover:bg-neutral-900 px-4 py-2 rounded transition-all ${
-          mobile ? " border rounded p-4" : null
-        } `}
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? "btn btn-info  font-montserrat" : "btn font-montserrat`"
+        }
       >
         Home
-      </a>
-      <a
-        href="#"
-        className={`font-montserrat text-xl font-semibold  hover:text-white hover:bg-neutral-900  px-4 py-2 rounded transition-all ${
-          mobile ? " border rounded p-4" : null
-        } `}
+      </NavLink>
+
+      <NavLink
+        to="/shop"
+        className={({ isActive }) =>
+          isActive ? "btn btn-info  font-montserrat" : "btn font-montserrat`"
+        }
       >
         Shop
-      </a>
+      </NavLink>
     </>
   );
 };

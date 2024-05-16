@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { toggleTheme } from "../redux/theme/themeSlice";
+import { toggleTheme } from "../../redux/theme/themeSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Icons } from "../constants/icons";
+import { Icons } from "../../constants/icons";
 
 const ThemeAndCartIcon = () => {
   const { currentTheme } = useSelector((state) => state.theme);
