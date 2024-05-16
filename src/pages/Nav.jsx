@@ -45,7 +45,7 @@ const Nav = () => {
       {/* small device */}
       {isOpen && (
         <div
-          className={`absolute pt-10 top-[11%] flex flex-col w-[80%] h-[80%] left-0 gap-2 px-10 bg-slate-800 text-white shadow-md rounded animate-shake  `}
+          className={`absolute pt-10 top-[11%] flex flex-col w-[80%] h-[80%] left-0 gap-2 px-10 bg-slate-800 text-white shadow-md rounded animate-shake z-50 `}
         >
           <NavLinks mobile />
         </div>
