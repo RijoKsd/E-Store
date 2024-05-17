@@ -1,8 +1,8 @@
 import Header from "../components/Header";
 import Hero from "../components/Hero";
-import AllProduct from "../pages/Shop/AllProduct";
+import ShowProducts from "../pages/Shop/ShowProducts";
 import Shop from "../pages/Shop/Shop";
-
+ 
 const routes = [
   {
     path: "/",
@@ -18,12 +18,17 @@ const routes = [
         children: [
           {
             index: true,
-            element: <AllProduct />,
+            element: <ShowProducts />,
           },
           {
             path: "/shop/:id",
-            element: <AllProduct />,
+            element: <ShowProducts />,
+            
           },
+          // {
+          //   path: "/shop/:id/:item",
+          //   element: <Popup />,
+          // }
         ],
       },
     ],

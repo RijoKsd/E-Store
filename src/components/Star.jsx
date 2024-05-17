@@ -1,7 +1,5 @@
 
 const Star = ({ stars }) => {
-  console.log(stars, "star");
-
   return (
     <div className="flex items-center">
       {[...Array(5)].map((_, index) => {

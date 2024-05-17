@@ -5,14 +5,13 @@ import { fetchProducts } from "../../redux/api/allProductSlice";
 import Loader from "../../components/Loader";
 import { useOutletContext } from "react-router-dom";
 
-const AllProduct = () => {
+const ShowProducts = () => {
   const category = useOutletContext();
-  console.log(category, "category");
-  const data = useSelector((store) => store.allProducts.products);
+   const data = useSelector((store) => store.allProducts.products);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [ dispatch]);
 
   const filteredData =
     category === "all"
@@ -33,4 +32,4 @@ const AllProduct = () => {
   );
 };
 
-export default AllProduct;
+export default ShowProducts;
