@@ -13,7 +13,6 @@ const Shop = () => {
       <div>
         <FilterProduct getCategory={getCategory} />
         <Outlet  context={category} />
-        
       </div>
     </section>
   );
