@@ -18,6 +18,6 @@ export default {
   },
   plugins: [daisyui, animations],
   daisyui: {
-    themes: ["light", "dark"],
+    themes: ["light", "dim"],
   },
 };
