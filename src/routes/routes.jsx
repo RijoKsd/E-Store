@@ -15,10 +15,16 @@ const routes = [
       {
         path: "/shop",
         element: <Shop />,
-        children:[
-          {index:true, element:<AllProduct />},
-          
-        ]
+        children: [
+          {
+            index: true,
+            element: <AllProduct />,
+          },
+          {
+            path: "/shop/:id",
+            element: <AllProduct />,
+          },
+        ],
       },
     ],
   },
