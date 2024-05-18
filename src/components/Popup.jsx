@@ -8,7 +8,7 @@ import { addToCart } from "../redux/cart/cartSlice";
 
 const Popup = () => {
   const { products, loading } = useSelector((store) => store.allProducts);
-  const { isProductInCart,cart } = useSelector((store) => store.cart);
+  const {cart } = useSelector((store) => store.cart);
   const { id: productId } = useParams();
   const { setIsPopupOpen } = usePopupContext();
   const dispatch = useDispatch();
@@ -21,17 +21,14 @@ const Popup = () => {
   const product = products.find((product) => product.id === Number(productId));
 
   const handleAddToCart = () => {
-    if (isProductInCart) {
-      toast.error("Product is already in the cart");
+    const existingProduct = cart.find((product) => product.id === Number(productId));
+    if (existingProduct) {
+      toast.error("Product already in cart");
       return;
-    }else{
-      dispatch(addToCart(product));
-      toast.success("Product added to cart");
-      setIsPopupOpen(false);
-
     }
-   
-
+    dispatch(addToCart(product));
+    toast.success("Product added to cart");
+    setIsPopupOpen(false);
   };
 
   if (loading) {
