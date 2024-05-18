@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import ShowProducts from "../pages/Shop/ShowProducts";
 import Shop from "../pages/Shop/Shop";
+import Cart from "../components/Cart";
  
 const routes = [
   {
@@ -31,6 +32,10 @@ const routes = [
           // }
         ],
       },
+      {
+        path:"/cart",
+        element: <Cart />
+      }
     ],
   },
 ];

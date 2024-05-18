@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { toggleTheme } from "../../redux/theme/themeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Icons } from "../../constants/icons";
+import { Link } from "react-router-dom";
 
 const ThemeAndCartIcon = () => {
   const { currentTheme } = useSelector((state) => state.theme);
@@ -19,9 +20,11 @@ const ThemeAndCartIcon = () => {
   return (
     <div className="flex items-center gap-5 justify-center animate-slide-in-right">
       <div>
-        <a href="#">
-          <Icons.Cart className=" w-10 h-10" />
-        </a>
+        <Link to="/cart">
+          <button>
+            <Icons.Cart className=" w-10 h-10" />
+          </button>
+        </Link>
       </div>
       <div>
         <label className="swap swap-rotate">
