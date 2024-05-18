@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 const ThemeAndCartIcon = () => {
   const { currentTheme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
+  const  totalQuantity = useSelector((store) => store.cart.totalQuantity);
+  console.log(totalQuantity, "totalQuantity");  
 
   useEffect(() => {
     localStorage.setItem("theme", currentTheme);
@@ -23,7 +25,9 @@ const ThemeAndCartIcon = () => {
         <Link to="/cart" className="relative">
           <button>
             <Icons.Cart className=" w-10 h-10" />
-            <span className="animate-ping absolute -top-9 -right-2 text-white w-6 h-6 rounded-full bg-info font-bold  flex justify-center items-center">1</span>
+            <span className="animate-ping absolute -top-9 -right-2 text-white w-6 h-6 rounded-full bg-info font-bold  flex justify-center items-center">
+              {totalQuantity}
+            </span>
           </button>
         </Link>
       </div>

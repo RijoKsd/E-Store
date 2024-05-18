@@ -1,19 +1,42 @@
 import { useParams } from "react-router-dom";
 import usePopupContext from "../context/usePopupContext";
 import Star from "./Star";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "./Loader";
+import { toast } from "react-toastify";
+import { addToCart } from "../redux/cart/cartSlice";
 
 const Popup = () => {
   const { products, loading } = useSelector((store) => store.allProducts);
+  const { isProductInCart,cart } = useSelector((store) => store.cart);
   const { id: productId } = useParams();
   const { setIsPopupOpen } = usePopupContext();
+  const dispatch = useDispatch();
+
+  console.log(cart, "cart")
+
+  // functions
+
+  /* The line is to find a specific product object from the `products` array based on the `id` property matching the `productId` extracted from the URL parameters using `useParams()`. */
+  const product = products.find((product) => product.id === Number(productId));
+
+  const handleAddToCart = () => {
+    if (isProductInCart) {
+      toast.error("Product is already in the cart");
+      return;
+    }else{
+      dispatch(addToCart(product));
+      toast.success("Product added to cart");
+      setIsPopupOpen(false);
+
+    }
+   
+
+  };
 
   if (loading) {
     return <Loader />;
   }
-  /* The line is to find a specific product object from the `products` array based on the `id` property matching the `productId` extracted from the URL parameters using `useParams()`. */
-  const product = products.find((product) => product.id === Number(productId));
 
   return (
     <div className=" mx-auto sm:w-full   max-sm:p-4   ">
@@ -40,8 +63,12 @@ const Popup = () => {
           </div>
           <div className="card-body md:w-1/2  font-montserrat">
             <div className="flex justify-between gap-2">
-              <h2 className="font-bold text-base  md:text-xl">{product.title}</h2>
-              <p className="font-bold text-2xl  md:text-3xl">${product.price}</p>
+              <h2 className="font-bold text-base  md:text-xl">
+                {product.title}
+              </h2>
+              <p className="font-bold text-2xl  md:text-3xl">
+                ${product.price}
+              </p>
             </div>
             <div className="rating">
               {/* <span>{data.rating.rate}</span> */}
@@ -58,7 +85,9 @@ const Popup = () => {
               </p>
             </div>
             <div className="flex justify-end mt-4">
-              <button className="btn btn-info w-full">Add to cart</button>
+              <button className="btn btn-info w-full" onClick={handleAddToCart}>
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
