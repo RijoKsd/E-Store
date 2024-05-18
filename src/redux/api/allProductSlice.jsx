@@ -5,21 +5,19 @@ import axios from "axios";
 
 const initialState = {
   products: [],
-  loading: false,
+  loading: true,
   error: "",
 };
 export const fetchProducts = createAsyncThunk(
   "allProducts/fetchProducts",
-  async (test) => {
-    let url = test
-      ? `https://fakestoreapi.com/products/category/${test}`
-      : "https://fakestoreapi.com/products";
-
+  async () => {
+    const API_URL = "https://fakestoreapi.com/products";
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(API_URL);
       return response.data;
     } catch (error) {
-      console.log(error);
+      console.log(error.message)
+      
     } }
 );
 
@@ -36,10 +34,10 @@ const allProductSlice = createSlice({
       state.loading = false;
       state.error = "";
     });
-    builder.addCase(fetchProducts.rejected, (state, action) => {
+    builder.addCase(fetchProducts.rejected, (state) => {
       state.products = [];
       state.loading = false;
-      state.error = action.error.message;
+      state.error = "Failed to fetch data, Please check your network "
     });
   },
 });

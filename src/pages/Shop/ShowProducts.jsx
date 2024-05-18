@@ -7,16 +7,22 @@ import { useOutletContext } from "react-router-dom";
 
 const ShowProducts = () => {
   const category = useOutletContext();
-   const data = useSelector((store) => store.allProducts.products);
+  const data = useSelector((store) => store.allProducts.products);
+  const { loading } = useSelector((store) => store.allProducts);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [ dispatch]);
+  }, [dispatch]);
 
   const filteredData =
     category === "all"
       ? data
       : data.filter((item) => item.category === category);
+
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <>
       {filteredData && filteredData.length > 0 ? (
