@@ -40,8 +40,8 @@ const Popup = () => {
           </div>
           <div className="card-body md:w-1/2  font-montserrat">
             <div className="flex justify-between gap-2">
-              <h2 className="font-bold  md:text-xl">{product.title}</h2>
-              <p className="font-bold text-3xl">${product.price}</p>
+              <h2 className="font-bold text-base  md:text-xl">{product.title}</h2>
+              <p className="font-bold text-2xl  md:text-3xl">${product.price}</p>
             </div>
             <div className="rating">
               {/* <span>{data.rating.rate}</span> */}
