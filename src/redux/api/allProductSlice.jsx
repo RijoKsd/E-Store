@@ -28,7 +28,7 @@ const allProductSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.pending, (state, action) => {
+    builder.addCase(fetchProducts.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(fetchProducts.fulfilled, (state, action) => {

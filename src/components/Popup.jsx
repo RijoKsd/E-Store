@@ -16,18 +16,22 @@ const Popup = () => {
   const product = products.find((product) => product.id === Number(productId));
 
   return (
-    <div className=" mx-auto sm:w-full bg-slate-300   max-sm:p-4   ">
-      {/* <div className="fixed -z-10 inset-0 bg-gray-500 bg-opacity-75 transition-opacity blur-3xl"></div> */}
-      <div className=" flex justify-center items-center w-full h-svh animate-horizontal-bounce ">
-        <div className="card lg:card-side bg-base-100 md:p-8 shadow-xl md:w-[800px] ">
+    <div className=" mx-auto sm:w-full   max-sm:p-4   ">
+      {/* <div className="fixed -z-10 inset-0  bg-opacity-75 transition-opacity blur-3xl"></div> */}
+      <div className=" flex justify-center  items-center w-full h-svh animate-horizontal-bounce ">
+        {/* popup */}
+        <div
+          className="card lg:card-side bg-base-1
+        00 md:p-8 shadow-xl md:w-[800px] border border-dark"
+        >
           <button
             onClick={() => setIsPopupOpen(false)}
-            className="btn btn-neutral btn-outline absolute right-1 top-3"
+            className="btn  btn-neutral border shadow shadow-white   absolute right-1 top-3"
           >
             Close
           </button>
 
-          <div className="md:w-1/3  flex justify-center items-center p-2 ">
+          <div className="md:w-1/3    flex justify-center items-center p-2 ">
             <img
               src={product.image}
               alt="Album"
