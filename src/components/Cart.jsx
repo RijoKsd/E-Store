@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
- import CartProduct from "./CartProduct";
+import CartProduct from "./CartProduct";
 
 const Cart = () => {
-   const cartItems = useSelector(store => store.cart.cart)
-   return (
+  const { cart, totalAmount } = useSelector((store) => store.cart);
+  return (
     <section className=" relative z-10 after:contents-[''] after:absolute after:z-0 after:h-full xl:after:w-1/3 after:top-0 after:right-0  ">
       <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto relative z-10">
         <div className="grid grid-cols-12">
@@ -33,12 +33,13 @@ const Cart = () => {
               </div>
             </div>
 
-            {
-              !cartItems.length ? <div className="flex justify-center items-center h-96">
+            {!cart.length ? (
+              <div className="flex justify-center items-center h-96">
                 <p className="font-semibold text-2xl">Cart is empty</p>
-              </div> : cartItems.map((item)=> <CartProduct key = {item.id} item = {item} />)
-            }
-          
+              </div>
+            ) : (
+              cart.map((item) => <CartProduct key={item.id} item={item} />)
+            )}
           </div>
 
           {/* checkout section */}
@@ -50,7 +51,7 @@ const Cart = () => {
               <div className="flex items-center justify-between py-8">
                 <p className="font-medium text-xl leading-8">3 Items</p>
                 <p className="font-semibold text-xl leading-8 text-indigo-600">
-                  $485.00
+                ${totalAmount.toFixed(2)}
                 </p>
               </div>
               <button className="w-full text-center bg-indigo-600 rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-indigo-700">

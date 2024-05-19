@@ -4,7 +4,7 @@ import ShowProducts from "../pages/Shop/ShowProducts";
 import Shop from "../pages/Shop/Shop";
 import Cart from "../components/Cart";
 import ErrorPage from "../components/ErrorPage";
- 
+
 const routes = [
   {
     path: "/",
@@ -26,7 +26,6 @@ const routes = [
           {
             path: "/shop/:id",
             element: <ShowProducts />,
-            
           },
           // {
           //   path: "/shop/:id/:item",
@@ -35,9 +34,9 @@ const routes = [
         ],
       },
       {
-        path:"/cart",
-        element: <Cart />
-      }
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
   },
 ];

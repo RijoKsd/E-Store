@@ -8,8 +8,7 @@ const ThemeAndCartIcon = () => {
   const { currentTheme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
   const  totalQuantity = useSelector((store) => store.cart.totalQuantity);
-  console.log(totalQuantity, "totalQuantity");  
-
+ 
   useEffect(() => {
     localStorage.setItem("theme", currentTheme);
     document.documentElement.setAttribute("data-theme", currentTheme);

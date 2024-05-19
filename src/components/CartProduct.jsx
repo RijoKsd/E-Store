@@ -1,13 +1,41 @@
-import { Icons } from "../constants/icons"
+import { useDispatch } from "react-redux";
+import { Icons } from "../constants/icons";
+import {
+  removeFromCart,
+  updateCartItemQuantity,
+} from "../redux/cart/cartSlice";
+import { toast } from "react-toastify";
+
+const CartProduct = ({ item }) => {
+  const { id, title, price, image, quantity, totalPrice } = item;
+
+   const dispatch = useDispatch();
+
+  const removeItemFromCart = () => {
+    dispatch(removeFromCart(id));
+    toast.success("Product removed from cart");
+  };
+
+  const handleCartQuantity = (data) => {
+    if (data.quantity < 1){
+      removeItemFromCart(id);
+      return
+    }
+     dispatch(updateCartItemQuantity(data));
 
  
 
-const CartProduct = ( {item}) => {
-    const { id, title, price, image } = item
+
+     
+  };
+
   return (
     <div className="flex flex-col min-[500px]:flex-row min-[500px]:items-center gap-5 py-6  border-b border-gray-200 group relative ">
       <button className="btn btn-circle absolute top-2 right-2">
-        <Icons.Trash className="w-6 h-6 transition-all duration-500 group-hover:text-indigo-600" />
+        <Icons.Trash
+          className="w-6 h-6 transition-all duration-500 group-hover:text-indigo-600"
+          onClick={removeItemFromCart}
+        />
       </button>
       <div className="w-full md:max-w-[126px]">
         <img
@@ -28,23 +56,29 @@ const CartProduct = ( {item}) => {
         </div>
         <div className="flex items-center max-[500px]:justify-center h-full max-md:mt-3">
           <div className="flex items-center h-full">
-            <button className="action-btn rounded-l-xl">
+            <button
+              className="action-btn rounded-l-xl cursor-pointer"
+              onClick={() => handleCartQuantity({ id, quantity: quantity - 1 })}
+            >
               <Icons.Minus className=" transition-all duration-500  w-6 h-6" />
             </button>
-            <span className="quantity">1</span>
-            <button className=" action-btn rounded-r-xl cursor-pointer ">
+            <span className="quantity">{quantity}</span>
+            <button
+              className=" action-btn rounded-r-xl cursor-pointer"
+              onClick={() => handleCartQuantity({ id, quantity: quantity + 1 })}
+            >
               <Icons.Plus className=" transition-all duration-500  w-6 h-6" />
             </button>
           </div>
         </div>
         <div className="flex  mt-2 items-center max-[500px]:justify-center md:justify-end max-md:mt-3 h-full">
           <p className="font-bold text-lg leading-8  text-center transition-all duration-300 group-hover:text-indigo-600">
-            $ {price}
+            $ {totalPrice.toFixed(2)}
           </p>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default CartProduct
+export default CartProduct;

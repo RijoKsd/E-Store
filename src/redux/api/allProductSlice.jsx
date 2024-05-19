@@ -34,10 +34,10 @@ const allProductSlice = createSlice({
       state.loading = false;
       state.error = "";
     });
-    builder.addCase(fetchProducts.rejected, (state) => {
+    builder.addCase(fetchProducts.rejected, (state,{payload}) => {
       state.products = [];
       state.loading = false;
-      state.error = "Failed to fetch data, Please check your network "
+      state.error = payload.error.message;
     });
   },
 });

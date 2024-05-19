@@ -13,8 +13,7 @@ const Popup = () => {
   const { setIsPopupOpen } = usePopupContext();
   const dispatch = useDispatch();
 
-  console.log(cart, "cart");
-
+ 
   // functions
 
   /* The line is to find a specific product object from the `products` array based on the `id` property matching the `productId` extracted from the URL parameters using `useParams()`. */
@@ -28,7 +27,8 @@ const Popup = () => {
       toast.error("Product already in cart");
       return;
     }
-    dispatch(addToCart(product));
+    // dispatching the action to add the product to the cart add quantity =1 and total amount of the product
+    dispatch(addToCart({ ...product, quantity: 1, totalPrice: product.price}));
     toast.success("Product added to cart");
     setIsPopupOpen(false);
   };
