@@ -2,7 +2,9 @@ import { useSelector } from "react-redux";
 import CartProduct from "./CartProduct";
 
 const Cart = () => {
-  const { cart, totalAmount } = useSelector((store) => store.cart);
+  const { cart, totalAmount, totalQuantity } = useSelector(
+    (store) => store.cart
+  );
   return (
     <section className=" relative z-10 after:contents-[''] after:absolute after:z-0 after:h-full xl:after:w-1/3 after:top-0 after:right-0  ">
       <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto relative z-10">
@@ -49,9 +51,11 @@ const Cart = () => {
             </h2>
             <div>
               <div className="flex items-center justify-between py-8">
-                <p className="font-medium text-xl leading-8">3 Items</p>
+                <p className="font-medium text-xl leading-8">
+                  {totalQuantity} Items
+                </p>
                 <p className="font-semibold text-xl leading-8 text-indigo-600">
-                ${totalAmount.toFixed(2)}
+                  ${totalAmount.toFixed(2)}
                 </p>
               </div>
               <button className="w-full text-center bg-indigo-600 rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-indigo-700">
