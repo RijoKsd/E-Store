@@ -12,7 +12,7 @@ const PaymentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     setIsClicked(true);
     dispatch(clearCart());
     setTimeout(() => {
@@ -67,12 +67,16 @@ const PaymentForm = () => {
                       Card number*{" "}
                     </label>
                     <input
-                      type="number"
+                      type="text"
                       placeholder="1234 5678 9012 "
                       className="input input-bordered w-full max-w-xs"
                       required
                       id="card-number-input"
                       inputMode="numeric"
+                      pattern="[0-9]*"
+                       onInvalid={(e) =>
+                        e.target.setCustomValidity("Please enter a card number")
+                      }
                     />
                   </div>
 
@@ -91,6 +95,11 @@ const PaymentForm = () => {
                         required
                         id="card-expiration-input"
                         inputMode="numeric"
+                        pattern="[0-9]*"
+                        maxLength={5}
+                        onInvalid={
+                          (e) => e.target.setCustomValidity("Please enter a number")
+                        }
                       />
                     </div>
                   </div>
@@ -100,28 +109,19 @@ const PaymentForm = () => {
                       className="mb-2 flex items-center gap-1 text-sm font-medium"
                     >
                       CVV*
-                      <button
-                        data-tooltip-target="cvv-desc"
-                        data-tooltip-trigger="hover"
-                        className="focus:outline-none focus:ring-2 focus:ring-primary-500 "
-                      ></button>
-                      <div
-                        id="cvv-desc"
-                        role="tooltip"
-                        className="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 "
-                      >
-                        The last 3 digits on back of card
-                        <div className="tooltip-arrow" data-popper-arrow></div>
-                      </div>
                     </label>
                     <input
-                      type="number"
+                      type="text"
                       placeholder=" 123"
                       className="input input-bordered w-full max-w-xs"
                       required
                       id="cvv-input"
                       inputMode="numeric"
-                      maxLength={3}
+                      max={3}
+                      pattern="[0-9]*"
+                      onInvalid={(e) =>
+                        e.target.setCustomValidity("Please enter a number")
+                      }
                     />
                   </div>
                 </div>
