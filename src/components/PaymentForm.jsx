@@ -73,10 +73,6 @@ const PaymentForm = () => {
                       required
                       id="card-number-input"
                       inputMode="numeric"
-                      pattern="[0-9]*"
-                       onInvalid={(e) =>
-                        e.target.setCustomValidity("Please enter a card number")
-                      }
                     />
                   </div>
 
@@ -95,11 +91,7 @@ const PaymentForm = () => {
                         required
                         id="card-expiration-input"
                         inputMode="numeric"
-                        pattern="[0-9]*"
                         maxLength={5}
-                        onInvalid={
-                          (e) => e.target.setCustomValidity("Please enter a number")
-                        }
                       />
                     </div>
                   </div>
@@ -118,10 +110,6 @@ const PaymentForm = () => {
                       id="cvv-input"
                       inputMode="numeric"
                       max={3}
-                      pattern="[0-9]*"
-                      onInvalid={(e) =>
-                        e.target.setCustomValidity("Please enter a number")
-                      }
                     />
                   </div>
                 </div>
