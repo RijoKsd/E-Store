@@ -8,16 +8,16 @@ const PaymentForm = () => {
   const totalAmount = useSelector((store) => store.cart.totalAmount);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-    const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-
- 
-  const handleSubmit = () => {
-    setIsClicked(true);
-      dispatch(clearCart());
-      navigate("/cart/success");
-    setTimeout(() => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     
+    setIsClicked(true);
+    dispatch(clearCart());
+    setTimeout(() => {
+      setIsClicked(false);
+      navigate("/cart/success");
       toast.success("Payment successful");
     }, 1000);
   };
@@ -35,7 +35,8 @@ const PaymentForm = () => {
             </h2>
 
             <div className="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12">
-              <form onSubmit={handleSubmit}
+              <form
+                onSubmit={handleSubmit}
                 action="#"
                 className="w-full rounded-lg border border-gray-200 p-4 shadow-sm  sm:p-6 lg:max-w-xl lg:p-8"
               >
@@ -126,12 +127,10 @@ const PaymentForm = () => {
                 </div>
 
                 <button
-                  
                   className="btn btn-info w-full mt-6"
                   disabled={isClicked}
                 >
-                    {isClicked ? "Processing..." : "Pay Now"}
-                 
+                  {isClicked ? "Processing..." : "Pay Now"}
                 </button>
               </form>
 

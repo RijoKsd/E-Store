@@ -81,6 +81,7 @@ const Cart = () => {
               <button
                 className="w-full text-center bg-indigo-600 rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-indigo-700"
                 onClick={fakeProcessPayment}
+                disabled={isClicked}
               >
                 {isClicked ? "Processing..." : "  Checkout"}
               </button>
