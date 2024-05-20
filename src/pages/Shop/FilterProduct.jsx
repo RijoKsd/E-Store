@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 
 const FilterProduct = ({ getCategory }) => {
   // api data
@@ -22,30 +21,20 @@ const FilterProduct = ({ getCategory }) => {
       {/*  this is the filter product component that will be used in the filter product page*/}
       <div className=" mt-5 animate-tilt">
         <ul className="flex flex-wrap justify-center gap-2 md:gap-9">
-          <NavLink
-            to="/shop/all"
-            className={({ isActive }) =>
-              isActive
-                ? "btn  btn-neutral capitalize"
-                : "btn btn-outline capitalize"
-            }
+          <button
+            className="btn  btn-neutral capitalize btn-outline "
             onClick={() => getCategory("all")}
           >
             All
-          </NavLink>
+          </button>
           {navLinks.map((link, index) => (
-            <NavLink
-              to={`/shop/${link}`}
+            <button
               key={index}
-              className={({ isActive }) =>
-                isActive
-                  ? "btn  btn-neutral capitalize"
-                  : " btn btn-outline capitalize"
-              }
+              className="btn  btn-neutral capitalize btn-outline "
               onClick={() => getCategory(link)}
             >
               {link}
-            </NavLink>
+            </button>
           ))}
         </ul>
       </div>

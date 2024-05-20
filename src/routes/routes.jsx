@@ -1,41 +1,43 @@
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import ShowProducts from "../pages/Shop/ShowProducts";
-import Shop from "../pages/Shop/Shop";
+import HomeLayout from "../Layout/HomeLayout";
+import CartLayout from "../Layout/CartLayout";
+import ShopLayout from "../Layout/ShopLayout";
+import Popup from "../components/Popup";
+import PaymentForm from "../components/PaymentForm";
 import Cart from "../components/Cart";
-import ErrorPage from "../components/ErrorPage";
+import PaymentSuccess from "../components/PaymentSuccess";    
 
 const routes = [
   {
     path: "/",
-    element: <Header />,
-    errorElement: <ErrorPage />,
+    element: <HomeLayout />,
+  },
+  {
+    path: "/cart",
+    element: <CartLayout />,
+     children: [
+      {
+        path: "",
+        element: <Cart />,
+      },
+      {
+        path: "payment",
+        element: <PaymentForm />,
+      },
+      {
+        path: "success",
+        element: <PaymentSuccess />,
+      }
+     
+    ],
+     
+  },
+  {
+    path: "/shop",
+    element: <ShopLayout />,
     children: [
       {
-        index: true,
-        element: <Hero />,
-      },
-      {
-        path: "/shop",
-        element: <Shop />,
-        children: [
-          {
-            index: true,
-            element: <ShowProducts />,
-          },
-          {
-            path: "/shop/:id",
-            element: <ShowProducts />,
-          },
-          // {
-          //   path: "/shop/:id/:item",
-          //   element: <Popup />,
-          // }
-        ],
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
+        path: ":id",
+        element: <Popup />,
       },
     ],
   },

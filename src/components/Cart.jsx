@@ -1,10 +1,30 @@
 import { useSelector } from "react-redux";
 import CartProduct from "./CartProduct";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
+  const [isClicked, setIsClicked] = useState(false);
   const { cart, totalAmount, totalQuantity } = useSelector(
     (store) => store.cart
   );
+  const navigate = useNavigate();
+
+  const fakeProcessPayment =  () => {
+    if(!cart.length) {
+      toast.error("Cart is empty");
+      return;
+    }
+    setIsClicked(true);
+   
+    setTimeout(() => {
+      // setIsClicked(false);
+      navigate("payment");
+    }, 1000);
+     
+  };
+
   return (
     <section className=" relative z-10 after:contents-[''] after:absolute after:z-0 after:h-full xl:after:w-1/3 after:top-0 after:right-0  ">
       <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto relative z-10">
@@ -50,7 +70,7 @@ const Cart = () => {
               Order Summary
             </h2>
             <div>
-              <div className="flex items-center justify-between py-8">
+              <div className="flex items-center justify-between md:py-8">
                 <p className="font-medium text-xl leading-8">
                   {totalQuantity} Items
                 </p>
@@ -58,8 +78,11 @@ const Cart = () => {
                   ${totalAmount.toFixed(2)}
                 </p>
               </div>
-              <button className="w-full text-center bg-indigo-600 rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-indigo-700">
-                Checkout
+              <button
+                className="w-full text-center bg-indigo-600 rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-indigo-700"
+                onClick={fakeProcessPayment}
+              >
+                {isClicked ? "Processing..." : "  Checkout"}
               </button>
             </div>
           </div>

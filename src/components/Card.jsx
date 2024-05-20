@@ -1,23 +1,8 @@
-import { Link } from "react-router-dom";
-import usePopupContext from "../context/usePopupContext";
-
 const Card = ({ item }) => {
-  const { id, title, category, price, image } = item;
+  const { title, category, price, image } = item;
 
-  
-  //   popup state from context
-  const { setIsPopupOpen } = usePopupContext();
-
-  const handleClick = () => {
-    setIsPopupOpen(true);
-  };
   return (
-    <Link
-      to={`/shop/${id}`}
-    
-      onClick={handleClick}
-      className="card bg-base-100  shadow-xl border border-dark  p-7 animate-bounce-fade-in"
-    >
+    <>
       <div className="object-cover h-[150px] ">
         <img
           src={image}
@@ -31,7 +16,7 @@ const Card = ({ item }) => {
         <h2 className="card-title text-sm">{title}</h2>
         <p className="font-extrabold text-2xl">$ {price}</p>
       </div>
-    </Link>
+    </>
   );
 };
 
