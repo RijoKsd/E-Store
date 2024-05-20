@@ -5,11 +5,13 @@ import Popup from "../components/Popup";
 import PaymentForm from "../components/PaymentForm";
 import Cart from "../components/Cart";
 import PaymentSuccess from "../components/PaymentSuccess";    
+import ErrorPage from "../components/ErrorPage";
 
 const routes = [
   {
     path: "/",
     element: <HomeLayout />,
+    errorElement: <ErrorPage />
   },
   {
     path: "/cart",
