@@ -38,7 +38,7 @@ E-Store is an e-commerce website where users can add products to the cart, delet
 
 1. Clone the repository:
     ```bash
-    git clonehttps://github.com/RijoKsd/E-Store.git
+    git clone https://github.com/RijoKsd/E-Store.git
     ```
 2. Navigate to the project directory:
     ```bash
@@ -55,7 +55,7 @@ E-Store is an e-commerce website where users can add products to the cart, delet
     ```bash
     npm run dev
     ```
-2. Open your browser and navigate to `http://localhost:35173` to view the application.
+2. Open your browser and navigate to `http://localhost:5173` to view the application.
 
 
 ## Contributing
