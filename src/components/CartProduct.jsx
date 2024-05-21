@@ -55,7 +55,7 @@ const CartProduct = ({ item }) => {
           </div>
         </div>
         <div className="flex items-center max-[500px]:justify-center h-full max-md:mt-3">
-          <div className="flex items-center h-full">
+          <div className="flex items-center ">
             <button
               className="action-btn rounded-l-xl cursor-pointer"
               onClick={() => handleCartQuantity({ id, quantity: quantity - 1 })}

@@ -70,7 +70,7 @@ const Cart = () => {
               Order Summary
             </h2>
             <div>
-              <div className="flex items-center justify-between md:py-8">
+              <div className="flex items-center justify-between py-8">
                 <p className="font-medium text-xl leading-8">
                   {totalQuantity} Items
                 </p>
