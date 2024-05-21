@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const FilterProduct = ({ getCategory }) => {
+  const [active, setActive] = useState("all");
   // api data
   const data = useSelector((store) => store.allProducts.products);
 
@@ -8,6 +10,12 @@ const FilterProduct = ({ getCategory }) => {
   const navLinks = data
     .map((item) => item.category)
     .filter((cat, index, self) => self.indexOf(cat) === index);
+
+  // set the category and add the active class
+  const setCategoryAndActive = (link) => {
+    getCategory(link);
+    setActive(link);
+  };
 
   return (
     <div className="flex  flex-col items-center">
@@ -22,16 +30,20 @@ const FilterProduct = ({ getCategory }) => {
       <div className=" mt-5 animate-tilt">
         <ul className="flex flex-wrap justify-center gap-2 md:gap-9">
           <button
-            className="btn  btn-neutral capitalize btn-outline "
-            onClick={() => getCategory("all")}
+            className={`btn   capitalize  ${
+              active === "all" ? "btn-neutral" : "btn-outline"
+            }`}
+            onClick={() => setCategoryAndActive("all")}
           >
             All
           </button>
           {navLinks.map((link, index) => (
             <button
               key={index}
-              className="btn  btn-neutral capitalize btn-outline "
-              onClick={() => getCategory(link)}
+              className={`btn capitalize  ${
+                active === link ? "btn-neutral" : "btn-outline"
+              }`}
+              onClick={() => setCategoryAndActive(link)}
             >
               {link}
             </button>
